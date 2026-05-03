@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ARGAPIST • Official Site | The Dominating MC</title>
+  <!-- Google Fonts & modern reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      font-family: 'Inter', sans-serif;
+      color: #f1f1f1;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1db954;
+      border-radius: 8px;
+    }
+
+    /* animated grain overlay (texture) */
+    .grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.03;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjciIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg==');
+      background-repeat: repeat;
+    }
+
+    /* modern container system */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF 0%, #b0b0b0 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      color: #1db954;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+    .nav-links a {
+      color: #ccc;
+      margin-left: 32px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s ease;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #1db954;
+    }
+
+    /* hero section — cinematic */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 780px;
+      z-index: 2;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(29,185,84,0.15);
+      backdrop-filter: blur(4px);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1db954;
+      border: 0.5px solid rgba(29,185,84,0.4);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 5.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #fff, #cfcfcf);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero .tagline-main {
+      font-size: 1.3rem;
+      color: #bbb;
+      margin-bottom: 32px;
+      border-left: 3px solid #1db954;
+      padding-left: 20px;
+      font-weight: 400;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #1db954;
+      color: #000;
+      padding: 14px 36px;
+      border-radius: 44px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s transform, 0.2s background;
+      font-size: 1rem;
+    }
+    .btn-primary:hover {
+      background: #1aa34a;
+      transform: scale(1.02);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 14px 36px;
+      border-radius: 44px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-outline:hover {
+      border-color: #1db954;
+      background: rgba(29,185,84,0.05);
+    }
+
+    /* sections common */
+    .section {
+      padding: 100px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .section-title i {
+      color: #1db954;
+      margin-right: 12px;
+    }
+
+    /* music grid (modern cards) */
+    .music-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .music-card {
+      background: rgba(20,20,20,0.6);
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 24px 24px 20px;
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+    }
+    .music-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(29,185,84,0.3);
+      background: rgba(25,25,25,0.8);
+    }
+    .music-card iframe {
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .streaming-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .stream-btn {
+      background: #111;
+      padding: 14px 30px;
+      border-radius: 60px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s;
+      border: 1px solid #2a2a2a;
+    }
+    .stream-btn i {
+      font-size: 1.3rem;
+    }
+    .stream-btn.spotify:hover {
+      background: #1DB954;
+      color: black;
+      border-color: #1DB954;
+    }
+    .stream-btn.youtube:hover {
+      background: #ff0000;
+      border-color: #ff0000;
+      color: white;
+    }
+
+    /* about with modern emphasis */
+    .about-grid {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .about-text {
+      flex: 2;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #cfcfcf;
+    }
+    .about-text p {
+      margin-bottom: 24px;
+    }
+    .highlight {
+      color: #1db954;
+      font-weight: 600;
+    }
+    .stat-badge {
+      flex: 1;
+      background: rgba(29,185,84,0.05);
+      padding: 32px;
+      border-radius: 36px;
+      border: 1px solid rgba(29,185,84,0.2);
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1db954;
+    }
+
+    /* Latest project card */
+    .project-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #111111, #080808);
+      border-radius: 48px;
+      padding: 48px 40px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .project-card h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .project-card .album-tag {
+      background: #1db95420;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+
+    /* footer */
+    .footer {
+      padding: 48px 0 40px;
+      text-align: center;
+      color: #6c6c6c;
+      font-size: 0.85rem;
+    }
+    .social-icons {
+      margin-bottom: 24px;
+    }
+    .social-icons a {
+      color: #aaa;
+      margin: 0 18px;
+      font-size: 1.5rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .social-icons a:hover {
+      color: #1db954;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        padding: 0 24px;
+      }
+      .hero h1 {
+        font-size: 3.4rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links a {
+        margin: 0 16px;
+      }
+      .hero {
+        min-height: 70vh;
+      }
+    }
+    @media (max-width: 580px) {
+      .music-card iframe {
+        width: 280px;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="container">
+  <!-- modern navigation -->
+  <nav class="navbar">
+    <div class="logo">ARGAPIST<span>.</span></div>
+    <div class="nav-links">
+      <a href="#music">Music</a>
+      <a href="#about">About</a>
+      <a href="#project">Project</a>
+      <a href="#contact">Connect</a>
+    </div>
+  </nav>
+
+  <!-- Hero section with dynamic statement -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="badge">
+        <i class="fas fa-microphone-alt"></i> SOUTH AFRICAN HIP-HOP FORCE
+      </div>
+      <h1>The Dominating<br>MC & Producer</h1>
+      <div class="tagline-main">
+        Raw lyricism, experimental production, authentic storytelling — Argapist is redefining the sound of tomorrow.
+      </div>
+      <div class="btn-group">
+        <a href="#music" class="btn-primary"><i class="fas fa-play"></i> LISTEN NOW</a>
+        <a href="https://open.spotify.com/album/7iQ1JneMQ1PvuOUq3L9WCA?si=iQ_Qy45GQOKlvHZxcyQnYA" target="_blank" class="btn-outline"><i class="fab fa-spotify"></i> Spotify</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUSIC SECTION - Embedded modern players -->
+  <section id="music" class="section">
+    <h2 class="section-title"><i class="fas fa-headphones"></i> sonic universe</h2>
+    <div class="music-grid">
+      <!-- YouTube Music Embed with modern styling -->
+      <div class="music-card">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/442HgsPKQak?si=8mAfkEMmXXnQ5hE1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div style="margin-top: 16px; text-align: center; font-weight: 600;">🎬 Official Visualizer</div>
+      </div>
+      <!-- Spotify Album Embed - immersive -->
+      <div class="music-card">
+        <iframe style="border-radius:16px" src="https://open.spotify.com/embed/album/7iQ1JneMQ1PvuOUq3L9WCA?utm_source=generator" width="320" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="streaming-links">
+      <a href="https://music.youtube.com/watch?v=442HgsPKQak" target="_blank" class="stream-btn youtube"><i class="fab fa-youtube"></i> YouTube Music</a>
+      <a href="https://open.spotify.com/album/7iQ1JneMQ1PvuOUq3L9WCA?si=iQ_Qy45GQOKlvHZxcyQnYA" target="_blank" class="stream-btn spotify"><i class="fab fa-spotify"></i> Full Album on Spotify</a>
+    </div>
+  </section>
+
+  <!-- ABOUT section with visual enhancement & storytelling -->
+  <section id="about" class="section">
+    <h2 class="section-title"><i class="fas fa-user-astronaut"></i> the architect</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><span class="highlight">Argapist</span> isn't just a rapper — he's a producer, visionary, and sonic architect from South Africa. Blending raw <strong>hip-hop rawness</strong> with avant-garde production, his music transcends conventional boundaries. Each bar is a reflection of lived experience, identity, and fearless creativity.</p>
+        <p>With a catalog that challenges the norm, he brings <strong>experimental textures</strong> and hard-hitting flows. Inspired by the underground and the global stage, Argapist has carved a lane that is entirely his own. The mission: push hip-hop forward while honoring its roots.</p>
+        <p><i class="fas fa-map-marker-alt" style="color:#1db954;"></i> Based in Johannesburg · Worldwide frequency</p>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-number">100%</div>
+        <div style="font-weight:700; margin: 10px 0">Authentic Vision</div>
+        <div style="font-size:0.85rem">Producer · MC · Storyteller</div>
+        <hr style="margin: 18px 0; border-color:#2a2a2a">
+        <div><i class="fas fa-compact-disc"></i>  "Raw lyricism meets experimental soul"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST PROJECT section - EXPERIMENTATION -->
+  <section id="project" class="section">
+    <h2 class="section-title"><i class="fas fa-tape"></i> current transmission</h2>
+    <div class="project-card">
+      <div class="album-tag"><i class="fas fa-crown"></i> LATEST BODY OF WORK</div>
+      <h3>EXPERIMENTATION</h3>
+      <p style="font-size: 1rem; margin-bottom: 20px; color: #bbbbbb;">An audacious exploration of sound, identity, and creative risk. From distorted 808s to cinematic interludes — this is Argapist unbound.</p>
+      <div style="display: flex; justify-content: center; gap: 20px; margin-top: 28px;">
+        <a href="https://open.spotify.com/album/7iQ1JneMQ1PvuOUq3L9WCA?si=iQ_Qy45GQOKlvHZxcyQnYA" target="_blank" style="color:#1db954; font-weight:600;"><i class="fab fa-spotify"></i> Stream on Spotify</a>
+        <a href="https://music.youtube.com/watch?v=442HgsPKQak" target="_blank" style="color:#ff0000; font-weight:600;"><i class="fab fa-youtube"></i> Watch on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- direct contact / booking zone (professional label touch) -->
+  <section id="contact" class="section" style="border-bottom: none;">
+    <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> connect & book</h2>
+    <div style="max-width: 680px; margin: 0 auto; text-align: center; background: rgba(255,255,255,0.02); border-radius: 48px; padding: 40px 30px;">
+      <p style="font-size: 1.1rem; margin-bottom: 18px;">For features, licensing, or label inquiries — reach out directly.</p>
+      <a href="mailto:argapist@music.africa" class="btn-primary" style="background: #ffffff10; border:1px solid #1db954; color:white; margin-top: 10px;"><i class="fas fa-paper-plane"></i> smitybcall@gmail.com</a>
+      <p style="margin-top: 32px; font-size: 0.8rem; color:#555;">Management & press: tumisangtheophilus@gmail.com</p>
+    </div>
+  </section>
+
+  <!-- footer with socials and copyright -->
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+      <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+      <a href="#" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+    </div>
+    <p>© 2026 Argapist | The Dominating MC. All rights reserved. <br> Representing South African hip-hop innovation.</p>
+  </footer>
+</div>
+
+<!-- tiny interaction: smooth scroll + small console greeting, just for vibe -->
+<script>
+  (function() {
+    // smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId === "#" || targetId === "") return;
+        const targetElem = document.querySelector(targetId);
+        if(targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    console.log("%c🔥 ARGAPIST // THE DOMINATING MC — professional presence loaded", "color: #1db954; font-size: 14px; font-weight: bold;");
+  })();
+</script>
+</body>
+</html>
